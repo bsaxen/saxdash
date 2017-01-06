@@ -250,7 +250,7 @@ function getPlaceAllStreams($prango_url,$rest_url,$place)
     }
   }
   $mres[0][1] = $n;
-  $mres[0][2] = 2;
+  //$mres[0][2] = 5;
   return $mres;
 }
 ?>
