@@ -230,7 +230,7 @@ function getPlaceAllStreams($prango_url,$rest_url,$place)
     )
   );
   $rest_url = $rest_url.'/liststreams';
-  $request_message_url = "$prango_url?request_message_type=$messagetype";
+  $request_message_url = "$prango_url?streams=$messagetype";
   $context  = stream_context_create($options);
   $result = file_get_contents($rest_url, false, $context);
   $streams = json_decode($result);
@@ -239,14 +239,14 @@ function getPlaceAllStreams($prango_url,$rest_url,$place)
   $n = 0;
   foreach ($streams as $stream)
   {
-    if($stream->nb_message_type < 5  && $stream->nb_global == $place)
+    if($stream->message_type < 5  && $stream->global == $place)
     {
       $n++;
-      $mres[$n][$ix_local] = $stream->nb_local;
-      $mres[$n][$ix_global] = $stream->nb_global;
-      $mres[$n][$ix_msgtype] = $stream->nb_message_type;
-      $mres[$n][$ix_client] = $stream->nb_client_id;
-      $mres[$n][$ix_value] = number_format($stream->latestvalue, 2,'.','');
+      $mres[$n][$ix_local] = $stream->local;
+      $mres[$n][$ix_global] = $stream->global;
+      $mres[$n][$ix_msgtype] = $stream->message_type;
+      $mres[$n][$ix_client] = $stream->client_id;
+      $mres[$n][$ix_value] = number_format($stream->latest_value, 2,'.','');
     }
   }
   $mres[0][1] = $n;
