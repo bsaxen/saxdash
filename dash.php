@@ -58,7 +58,7 @@ window.onload = function(){
 
     function initDash(result) {
         console.log(result['0']['1']);
-        //console.log(result['0']['2']);
+        console.log(result['0']['2']);
         var rr = result['0']['1']; // Number of items
         //var cc = result['0']['2']; // Number of parameters in each item
         var count;
@@ -75,7 +75,7 @@ window.onload = function(){
             div.style.margin = 'auto';
             //div.style.position = 'relative';
             //div.style.display = 'inline-block';
-            //console.log(msgtype);
+            console.log(msgtype);
             var title = result[count]['4'];
             title = title.concat(' ');
             title = title.concat(result[count]['1'])
@@ -163,7 +163,7 @@ window.onload = function(){
 
     var tid = setInterval(getData, 5000);
     function getData() {
-        //console.log("Getting  data");
+        console.log("Getting  data");
         $.ajax({
             url:		'ajax.php',
             dataType:	'json',
@@ -179,8 +179,8 @@ window.onload = function(){
     {
         //console.log("data!");
         //console.log(result);
-        //console.log(result['0']['1']);
-        //console.log(result['0']['2']);
+        console.log(result['0']['1']);
+        console.log(result['0']['2']);
         var rr = result['0']['1']; // Number of items
         //var cc = result['0']['2']; // Number of parameters in each item
         var count;
