@@ -239,7 +239,7 @@ function getPlaceAllStreams($prango_url,$rest_url,$place)
   $n = 0;
   foreach ($streams as $stream)
   {
-    if($stream->message_type < 5  && $stream->global == $place)
+    if($stream->message_type > 3  && $stream->message_type < 9  && $stream->global == $place)
     {
       $n++;
       $mres[$n][$ix_local] = $stream->local;
