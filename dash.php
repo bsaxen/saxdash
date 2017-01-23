@@ -40,7 +40,7 @@
 //    <div id="g3"></div>
 //    <div id="g0"></div>
 //</div>
-var window.g = [];
+
 
 window.onload = function(){
 
@@ -53,6 +53,8 @@ window.onload = function(){
             place: '<?php echo("$place")?>'
         }
     });
+    
+    var g = [];
 
     function initDash(result) {
         console.log(result['0']['1']);
