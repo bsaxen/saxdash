@@ -79,7 +79,7 @@ window.onload = function(){
             var title = result[count]['4'];
             title = title.concat(' ');
             title = title.concat(result[count]['1'])
-            if(msgtype == '0')
+            if(msgtype == '4')
             {
                 div.style.left = '0';
                 div.style.right = '0';
@@ -98,7 +98,7 @@ window.onload = function(){
                     label: 'celcius'
                 });
             }
-            if(msgtype == '1')
+            if(msgtype == '5')
             {
               div.style.width  = '200px';
               div.style.height = '160px';
@@ -113,7 +113,7 @@ window.onload = function(){
                     label: 'hum%'
                 });
             }
-            if(msgtype == '2')
+            if(msgtype == '6')
             {
               div.style.width  = '300px';
               div.style.height = '240px';
@@ -127,7 +127,7 @@ window.onload = function(){
                     label: 'kg'
                 });
             }
-            if(msgtype == '3')
+            if(msgtype == '8')
             {
               div.style.width  = '400px';
               div.style.height = '320px';
