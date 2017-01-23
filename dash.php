@@ -190,7 +190,7 @@ window.onload = function(){
             g[count].refresh(intvalue);
         }
     }
-};
+}
 </script>
 
 </html>
