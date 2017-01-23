@@ -229,7 +229,7 @@ function getPlaceAllStreams($prango_url,$rest_url,$place)
         'method'  => 'GET'
     )
   );
-  $rest_url = $rest_url.'/streams';
+  $rest_url = $rest_url.'streams';
   //$request_message_url = "$prango_url?streams=$messagetype";
   $context  = stream_context_create($options);
   $result = file_get_contents($rest_url, false, $context);
