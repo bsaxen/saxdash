@@ -136,7 +136,7 @@ window.onload = function(){
                     id: did,
                     value: 1,
                     min: 0,
-                    max: 5000,
+                    max: 8000,
                     pointer: true,
                     pointerOptions: {
                       toplength: -15,
