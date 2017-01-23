@@ -40,7 +40,7 @@
 //    <div id="g3"></div>
 //    <div id="g0"></div>
 //</div>
-var window.g;
+var window.g = [];
 
 window.onload = function(){
 
