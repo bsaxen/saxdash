@@ -9,6 +9,8 @@
     <style>
     body {
         text-align: center;
+        background-image: url(bg.jpg);
+        background-repeat: repeat;
     }
 
     #g9 {
@@ -53,7 +55,7 @@ window.onload = function(){
             place: '<?php echo("$place")?>'
         }
     });
-    
+
     var g = [];
 
     function initDash(result) {
@@ -70,24 +72,22 @@ window.onload = function(){
             var msgtype = result[count][3];
             var mt = msgtype.toString();
             var temp1 = "g";
-            var did = temp1.concat(mt);
+            var did = temp1.concat(count);
             div.id = did;
-            div.style.margin = 'auto';
+            div.style.float = 'left';
+            //div.style.backgroundColor = 'red';
+            div.style.width  = '200px';
+            div.style.height = '160px';
             //div.style.position = 'relative';
             //div.style.display = 'inline-block';
             console.log(msgtype);
-            var title = result[count]['4'];
-            title = title.concat(' ');
-            title = title.concat(result[count]['1'])
+            var title = "";
+            //title = title.concat(' ');
+            //title = title.concat(result[count]['1'])
             if(msgtype == '4')
             {
-                div.style.left = '0';
-                div.style.right = '0';
-                div.style.top = '0';
-                div.style.bottom = '0';
-                div.style.width  = '100px';
-                div.style.height = '80px';
-                div.style.backgroundColor = 'white';
+                title += "Temperatur - ";
+                title += result[count]['1'];
                 g[count] = new JustGage({
                     id: did,
                     value: 1,
@@ -95,43 +95,46 @@ window.onload = function(){
                     max: 50,
                     decimals: 2,
                     title: title,
-                    label: 'celcius'
+                    label: 'celcius',
+                    labelFontColor: "#ffffff",
+                    valueFontColor: "#ffffff"
                 });
             }
             if(msgtype == '5')
             {
-              div.style.width  = '200px';
-              div.style.height = '160px';
-              div.style.backgroundColor = 'white';
+                title += "Luftfuktighet - ";
+                title += result[count]['1'];
                 g[count] = new JustGage({
                     id: did,
                     value: 1,
                     min: 30,
                     max: 100,
                     decimals: 2,
-                    title: result[count]['1'],
-                    label: 'hum%'
+                    title: title,
+                    label: 'hum%',
+                    labelFontColor: "#ffffff",
+                    valueFontColor: "#ffffff"
                 });
             }
             if(msgtype == '6')
             {
-              div.style.width  = '300px';
-              div.style.height = '240px';
-              div.style.backgroundColor = 'white';
+                title += "Vikt - ";
+                title += result[count]['1'];
                 g[count] = new JustGage({
                     id: did,
                     value: 1,
                     min: 0,
                     max: 120,
                     title: title,
-                    label: 'kg'
+                    label: 'kg',
+                    labelFontColor: "#ffffff",
+                    valueFontColor: "#ffffff"
                 });
             }
             if(msgtype == '8')
             {
-              div.style.width  = '400px';
-              div.style.height = '320px';
-              div.style.backgroundColor = 'white';
+                title += "El - ";
+                title += result[count]['1'];
                 g[count] = new JustGage({
                     id: did,
                     value: 1,
@@ -152,7 +155,9 @@ window.onload = function(){
                     hidevalue: true,
                     decimals: 1,
                     title: title,
-                    label: 'watt'
+                    label: 'watt',
+                    labelFontColor: "#ffffff",
+                    valueFontColor: "#ffffff"
                 });
             }
 
