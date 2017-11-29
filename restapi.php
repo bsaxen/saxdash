@@ -222,6 +222,7 @@ function getPlaceAllStreams($prango_url,$rest_url,$place)
   $ix_msgtype = 3;
   $ix_global  = 4;
   $ix_client  = 5;
+  $ix_stream_index = 6;
 
   $options = array(
     'http' => array(
@@ -239,13 +240,14 @@ function getPlaceAllStreams($prango_url,$rest_url,$place)
   $n = 0;
   foreach ($streams as $stream)
   {
-    if($stream->message_type > 3  && $stream->message_type < 9  && $stream->global == $place)
+    if($stream->message_type > 3  && $stream->message_type < 9  && $stream->global == $place && $stream->update_ts > "2017-11-01")
     {
       $n++;
       $mres[$n][$ix_local] = $stream->local;
       $mres[$n][$ix_global] = $stream->global;
       $mres[$n][$ix_msgtype] = $stream->message_type;
       $mres[$n][$ix_client] = $stream->client_id;
+      $mres[$n][$ix_stream_index] = $stream->stream_index;
       $mres[$n][$ix_value] = number_format($stream->latest_value, 2,'.','');
     }
   }

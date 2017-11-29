@@ -1,7 +1,7 @@
 <?php
 include("restapi.php");
-$prango_url = "http://nabton.cm:8585";
-$rest_url = "http://ioant.com:1882/v0.1/";
+$prango_url = "http://ioant.simuino.cm:8585";
+$rest_url = "http://ioant.simuino.com:1881/v0.1/";
 
 $place = $_GET['place'];
 

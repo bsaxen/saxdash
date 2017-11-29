@@ -11,13 +11,8 @@
         text-align: center;
         background-image: url(bg.jpg);
         background-repeat: repeat;
-    }
-
-    #g9 {
-        width:400px; height:320px;
-        display: inline-block;
-        margin: 1em;
-        background-color: white;
+        color: green;
+        a: link {color red;}
     }
 
     p {
@@ -60,7 +55,7 @@ window.onload = function(){
 
     function initDash(result) {
         console.log(result['0']['1']);
-        console.log(result['0']['2']);
+        //console.log(result['0']['2']);
         var rr = result['0']['1']; // Number of items
         //var cc = result['0']['2']; // Number of parameters in each item
         var count;
@@ -87,12 +82,12 @@ window.onload = function(){
             if(msgtype == '4')
             {
                 title += "Temperatur - ";
-                title += result[count]['1'];
+                title += result[count]['5'];
                 g[count] = new JustGage({
                     id: did,
                     value: 1,
                     min: 0,
-                    max: 50,
+                    max: 60,
                     decimals: 2,
                     title: title,
                     label: 'celcius',
@@ -103,7 +98,7 @@ window.onload = function(){
             if(msgtype == '5')
             {
                 title += "Luftfuktighet - ";
-                title += result[count]['1'];
+                title += result[count]['5'];
                 g[count] = new JustGage({
                     id: did,
                     value: 1,
@@ -119,7 +114,7 @@ window.onload = function(){
             if(msgtype == '6')
             {
                 title += "Vikt - ";
-                title += result[count]['1'];
+                title += result[count]['5'];
                 g[count] = new JustGage({
                     id: did,
                     value: 1,
@@ -134,7 +129,7 @@ window.onload = function(){
             if(msgtype == '8')
             {
                 title += "El - ";
-                title += result[count]['1'];
+                title += result[count]['5'];
                 g[count] = new JustGage({
                     id: did,
                     value: 1,
@@ -185,7 +180,7 @@ window.onload = function(){
         //console.log("data!");
         //console.log(result);
         console.log(result['0']['1']);
-        console.log(result['0']['2']);
+        //console.log(result['0']['2']);
         var rr = result['0']['1']; // Number of items
         //var cc = result['0']['2']; // Number of parameters in each item
         var count;
