@@ -4,6 +4,7 @@ $prango_url = "http://ioant.simuino.cm:8585";
 $rest_url = "http://ioant.simuino.com:1881/v0.1/";
 
 $place = $_GET['place'];
+$mode = $_GET['mode'];
 
 //$elpow_kil = getLatestValue($prango_url,$rest_url,"kil","kvv32","esp2",3,0);
 //$elpow_kil = number_format($elpow_kil, 2, '.', '');
@@ -16,7 +17,7 @@ $place = $_GET['place'];
 //echo json_encode($result);
 
 //$mres = array();
-$mres = getPlaceAllStreams($prango_url,$rest_url,$place);
+$mres = getPlaceAllStreams($prango_url,$rest_url,$place,$mode);
 //print_r($mres);
 echo json_encode($mres);
 ?>

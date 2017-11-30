@@ -214,7 +214,31 @@ function getAllStreams($prango_url,$rest_url)
   return $mres;
 }
 //=========================================================================
-function getPlaceAllStreams($prango_url,$rest_url,$place)
+function getLabel($client,$streamindex)
+//=========================================================================
+{
+  // Nytomta
+  if ($client == "nixie2" && $streamindex == 0) $label = "el";
+  if ($client == "D2" && $streamindex == 0) $label = "element ut";
+  if ($client == "D2" && $streamindex == 1) $label = "panna ut";
+  if ($client == "D2" && $streamindex == 2) $label = "panna in";
+  if ($client == "D2" && $streamindex == 3) $label = "pannrum";
+  if ($client == "D2" && $streamindex == 4) $label = "element in";
+  if ($client == "D8" && $streamindex == 0) $label = "lab";
+  if ($client == "D8" && $streamindex == 1) $label = "ute";
+  if ($client == "D10" && $streamindex == 0) $label = "hus vardagsrum";
+  if ($client == "esp3" && $streamindex == 0) $label = "hus sovrum";
+
+  // Kil
+  if ($client == "esp2" && $streamindex == 0) $label = "el";
+  if ($client == "esp4" && $streamindex == 0) $label = "panna ut";
+  if ($client == "esp4" && $streamindex == 1) $label = "sovrum";
+  if ($client == "esp4" && $streamindex == 2) $label = "skorsten";
+  if ($client == "esp4" && $streamindex == 3) $label = "panna in";
+  return($label);
+}
+//=========================================================================
+function getPlaceAllStreams($prango_url,$rest_url,$place,$mode)
 //=========================================================================
 {
   $ix_local   = 1;
@@ -223,6 +247,8 @@ function getPlaceAllStreams($prango_url,$rest_url,$place)
   $ix_global  = 4;
   $ix_client  = 5;
   $ix_stream_index = 6;
+  $ix_label = 7;
+  $ix_total = 8;
 
   $options = array(
     'http' => array(
@@ -249,6 +275,14 @@ function getPlaceAllStreams($prango_url,$rest_url,$place)
       $mres[$n][$ix_client] = $stream->client_id;
       $mres[$n][$ix_stream_index] = $stream->stream_index;
       $mres[$n][$ix_value] = number_format($stream->latest_value, 2,'.','');
+      $mres[$n][$ix_label] = getLabel($stream->client_id,$stream->stream_index);
+
+      if ($mode == 1) {
+        $mres[$n][$ix_total] =  $mres[$n][$ix_label];
+      }
+      else {
+        $mres[$n][$ix_total] =  $mres[$n][$ix_client]." ".$mres[$n][$ix_stream_index];
+      }
     }
   }
   $mres[0][1] = $n;

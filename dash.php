@@ -1,4 +1,4 @@
-<?php $place = $_GET['place']; echo("<h1>$place</h1>");?>
+<?php $place = $_GET['place'];$mode = $_GET['mode'];?>
 <!doctype html>
 
 <html>
@@ -7,12 +7,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <style>
+    a {
+      color: red;
+    }
     body {
         text-align: center;
         background-image: url(bg.jpg);
         background-repeat: repeat;
         color: green;
-        a: link {color red;}
     }
 
     p {
@@ -24,7 +26,13 @@
     </style>
 </head>
 <body>
-<a href=index.html> back </a>
+ <?php
+
+  echo("<a href=index.html> ==> </a>");
+  echo("<a href=dash.php?place=$place&mode=1> label </a>");
+  echo("<a href=dash.php?place=$place&mode=2> client </a>");
+  echo("<h1>$place </h1>");
+?>
 
 
 </body>
@@ -47,7 +55,8 @@ window.onload = function(){
         success:	initDash,
         type:		'GET',
         data:		{
-            place: '<?php echo("$place")?>'
+            place: '<?php echo("$place")?>',
+            mode: '<?php echo("$mode")?>'
         }
     });
 
@@ -79,10 +88,9 @@ window.onload = function(){
             var title = "";
             //title = title.concat(' ');
             //title = title.concat(result[count]['1'])
-            if(msgtype == '4')
+            if(msgtype == '4') // Temperature
             {
-                title += "Temperatur - ";
-                title += result[count]['5'];
+                title += result[count]['8'];
                 g[count] = new JustGage({
                     id: did,
                     value: 1,
@@ -95,10 +103,9 @@ window.onload = function(){
                     valueFontColor: "#ffffff"
                 });
             }
-            if(msgtype == '5')
+            if(msgtype == '5') // Humidity
             {
-                title += "Luftfuktighet - ";
-                title += result[count]['5'];
+                title += result[count]['8'];
                 g[count] = new JustGage({
                     id: did,
                     value: 1,
@@ -111,10 +118,14 @@ window.onload = function(){
                     valueFontColor: "#ffffff"
                 });
             }
-            if(msgtype == '6')
+            if(msgtype == '6') // Mass
             {
-                title += "Vikt - ";
+                title += "V-";
                 title += result[count]['5'];
+                title += "-";
+                title += result[count]['6'];
+                title += "-";
+                title += result[count]['7'];
                 g[count] = new JustGage({
                     id: did,
                     value: 1,
@@ -126,10 +137,9 @@ window.onload = function(){
                     valueFontColor: "#ffffff"
                 });
             }
-            if(msgtype == '8')
+            if(msgtype == '8') // Electricity
             {
-                title += "El - ";
-                title += result[count]['5'];
+                title += result[count]['8'];
                 g[count] = new JustGage({
                     id: did,
                     value: 1,
