@@ -219,8 +219,8 @@ function getLabel($client,$streamindex)
 {
   // Nytomta
   if ($client == "nixie2" && $streamindex == 0) $label = "el";
-  if ($client == "D2" && $streamindex == 0) $label = "element ut";
-  if ($client == "D2" && $streamindex == 1) $label = "panna ut";
+  if ($client == "D2" && $streamindex == 0) $label = "panna ut";
+  if ($client == "D2" && $streamindex == 1) $label = "element ut";
   if ($client == "D2" && $streamindex == 2) $label = "panna in";
   if ($client == "D2" && $streamindex == 3) $label = "pannrum";
   if ($client == "D2" && $streamindex == 4) $label = "element in";
