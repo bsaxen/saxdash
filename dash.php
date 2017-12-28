@@ -5,7 +5,7 @@
 <head>
     <title>SAXDASH</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>
     a {
       color: red;
@@ -180,7 +180,8 @@ window.onload = function(){
             success:	setData,
             type:		'GET',
             data:		{
-                place: '<?php echo("$place")?>'
+                place: '<?php echo("$place")?>',
+                mode: '<?php echo("$mode")?>'
             }
         });
     }

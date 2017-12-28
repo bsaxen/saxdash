@@ -1,6 +1,8 @@
 <?php
+
 include("restapi.php");
-$prango_url = "http://ioant.simuino.cm:8585";
+
+$prango_url = "http://ioant.simuino.com:8585";
 $rest_url = "http://ioant.simuino.com:1881/v0.1/";
 
 $place = $_GET['place'];
@@ -17,6 +19,8 @@ $mode = $_GET['mode'];
 //echo json_encode($result);
 
 //$mres = array();
+
+
 $mres = getPlaceAllStreams($prango_url,$rest_url,$place,$mode);
 //print_r($mres);
 echo json_encode($mres);

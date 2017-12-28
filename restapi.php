@@ -1,6 +1,15 @@
 <?php
 $mres = array();
 
+//=========================================================================
+function getYesterdayDate()
+//=========================================================================
+{
+  $date = new DateTime();
+  $date->sub(new DateInterval('P1D'));
+  $res =  $date->format('Y-m-d');
+  return $res;
+}
 
 //=========================================================================
 function publishRunStepperMotorBasic($prango_url,$global,$local,$client,$streamindex,$dir,$dbs,$nos,$ss)
@@ -217,6 +226,7 @@ function getAllStreams($prango_url,$rest_url)
 function getLabel($client,$streamindex)
 //=========================================================================
 {
+  $label = "unknown";
   // Nytomta
   if ($client == "nixie2" && $streamindex == 0) $label = "el";
   if ($client == "D2" && $streamindex == 0) $label = "panna ut";
@@ -227,7 +237,7 @@ function getLabel($client,$streamindex)
   if ($client == "D8" && $streamindex == 0) $label = "lab";
   if ($client == "D8" && $streamindex == 1) $label = "ute";
   if ($client == "D10" && $streamindex == 0) $label = "hus vardagsrum";
-  if ($client == "esp3" && $streamindex == 0) $label = "hus sovrum";
+  //if ($client == "esp3" && $streamindex == 0) $label = "hus sovrum";
 
   // Kil
   if ($client == "esp2" && $streamindex == 0) $label = "el";
@@ -235,12 +245,16 @@ function getLabel($client,$streamindex)
   if ($client == "esp4" && $streamindex == 1) $label = "sovrum";
   if ($client == "esp4" && $streamindex == 2) $label = "skorsten";
   if ($client == "esp4" && $streamindex == 3) $label = "panna in";
+  if ($client == "esp3" && $streamindex == 0) $label = "ute";
   return($label);
 }
 //=========================================================================
 function getPlaceAllStreams($prango_url,$rest_url,$place,$mode)
 //=========================================================================
 {
+
+  $yesterday = getYesterdayDate();
+
   $ix_local   = 1;
   $ix_value   = 2;
   $ix_msgtype = 3;
@@ -266,7 +280,7 @@ function getPlaceAllStreams($prango_url,$rest_url,$place,$mode)
   $n = 0;
   foreach ($streams as $stream)
   {
-    if($stream->message_type > 3  && $stream->message_type < 9  && $stream->global == $place && $stream->update_ts > "2017-11-01")
+    if($stream->message_type > 3  && $stream->message_type < 9  && $stream->global == $place && $stream->update_ts > $yesterday)
     {
       $n++;
       $mres[$n][$ix_local] = $stream->local;
